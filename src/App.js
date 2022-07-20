@@ -19,5 +19,11 @@ function App() {
   );
 }
 const Container=styled.div`
-width:100vw;`
+width:100vw;
+height: 100vh;
+overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
 export default App;
