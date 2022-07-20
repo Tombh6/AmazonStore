@@ -31,8 +31,15 @@ function Navbar() {
             </BasketButton>
         </RightContainer>
         </Inner>
+        <MobileSearchBar>
+
+          <input type="text" placeholder='Search...'/>
+          <SearchIcon>
+          <img src="./searchIcon.png" alt="" />
+          </SearchIcon>
+        </MobileSearchBar>
     </Container>
-  )
+  );
 }
 
 const Container= styled.div`
@@ -42,6 +49,11 @@ background-color: #131921;
 display: flex;
 align-items: center;
 position: relative;
+
+@media only screen and (max-width:767px){
+   height: 120px;
+   flex-direction: column;
+}
 `;
 const Inner= styled.div`
 width: 100%;
@@ -78,9 +90,32 @@ input{
     }
 }
 
-@media only screen and (max-width:767px){
+@media only screen and (max-width: 767px){
     display:none;
 }
+`;
+const MobileSearchBar= styled.div`
+height: 35px;
+width: 90%;
+display: flex;
+align-items: center;
+padding: 10px;
+
+input{
+    flex:1;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 5px 0px 0px 5px;
+    
+    &::placeholder{
+        padding-left: 10px;
+    }
+}
+    @media only screen and(min-width: 768px){
+        display: none;
+    }
+
 `;
 const SearchIcon= styled.div`
 background-color:#febd69;
@@ -139,4 +174,5 @@ img{
     }
 
 `;
+
 export default Navbar
