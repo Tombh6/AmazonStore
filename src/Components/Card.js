@@ -3,17 +3,17 @@ import styled from "styled-components";
 import Rating from '@material-ui/lab/Rating';
 
 
-function Card() {
+function Card({basket, setBasket, image, title, price, rating}) {
   return (
     
     <Container>
         <Image> {/*For image links that which will appear on the cards*/}
-        <img src="https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg" alt="" />
+        <img src={image} alt="" />
         </Image>
         <Description>
-         <h5>SAMSUNG 85" Class QLED 4K UHD Q60B Series Dual LED Quantum HDR, Motion Xcelerator</h5>
-         <Rating name="half-rating-read" defaultValue={4.5} precision={0.5} readOnly />
-         <p>$ 250</p>
+         <h5>{title}</h5>
+         <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
+         <p>$ {price}</p>
 
          <button>Add to cart</button>
         </Description>

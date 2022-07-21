@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Card from './Card'
 
 
-function Home(){
+function Home({basket, setBasket}){
     return(
         <Container>
             <Navbar/>
@@ -13,14 +13,14 @@ function Home(){
              <img src="./amazonBanner.jpg" alt="" /> {/*For big image in mobile screen */}
             </Banner>
             <Main>
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
-                <Card />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
             </Main>
         </Container>
     )
