@@ -29,7 +29,7 @@ display: flex;
 flex-direction: column;
 background-color: #fff;
 z-index: 10;
- border: 1px solid red; /*Card border color */
+ /*border: 1px solid red; //Card border color */
 `;
 const Image= styled.div`
 width: 100%;

@@ -59,8 +59,8 @@ justify-content: center;
 place-items: center;
 width: 100%;
 
-grid-auto-rows: 420px;
-grid-template-columns: repeat(4,300px);
+grid-auto-rows: 420px 420px;
+grid-template-columns: repeat(4,280px);
 grid-gap: 20px;
 /*Mobile screen */
 @media only screen and (max-width: 767px){
@@ -70,6 +70,11 @@ grid-gap: 0;
 /*Tablet screen */
 @media only screen and (min-width: 767px) and (max-width: 1200px){
 grid-template-columns: repeat(3, 30%);
+}
+
+@media only screen and (min-width: 767px){
+    margin-top: -130px;
+    padding: 10px 0px;
 }
 `;
 
