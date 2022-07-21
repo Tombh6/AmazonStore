@@ -62,6 +62,15 @@ width: 100%;
 grid-auto-rows: 420px;
 grid-template-columns: repeat(4,300px);
 grid-gap: 20px;
+/*Mobile screen */
+@media only screen and (max-width: 767px){
+grid-template-columns: repeat(2, 50%);
+grid-gap: 0;
+}
+/*Tablet screen */
+@media only screen and (min-width: 767px) and (max-width: 1200px){
+grid-template-columns: repeat(3, 30%);
+}
 `;
 
 export default Home
