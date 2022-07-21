@@ -4,7 +4,9 @@ import Navbar from './Navbar'
 import Card from './Card'
 
 
-function Home({basket, setBasket}){
+function Home(){
+
+   
     return(
         <Container>
             <Navbar/>
@@ -13,14 +15,14 @@ function Home({basket, setBasket}){
              <img src="./amazonBanner.jpg" alt="" /> {/*For big image in mobile screen */}
             </Banner>
             <Main>
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
-                <Card basket={basket} setBasket={setBasket} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={850} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/3105D4N+YAL._AC_UF452,452_FMjpg_.jpg"} price={250} rating={4} title={"Airpods"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
+                <Card  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"} price={250} rating={3} title={"SAMSUNG"} />
             </Main>
         </Container>
     )

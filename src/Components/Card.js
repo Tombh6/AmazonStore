@@ -1,9 +1,26 @@
 import React from 'react';
 import styled from "styled-components";
 import Rating from '@material-ui/lab/Rating';
+import { useStateValue } from "../StateProvider";
 
-
-function Card({basket, setBasket, image, title, price, rating}) {
+function Card({ image, title, price, rating}) {
+    const[{basket}, dispatch]= useStateValue();
+    const addToBasket = (e)=>{
+        e.preventDefault();
+        dispatch({
+            type:"ADD_TO_BASKET",
+            item:{
+                title,
+                price,
+                image,
+                rating,
+            },
+        });
+      //  setBasket([...basket, {image, title, price, rating}]);
+        //The meaning of the three dots before the basket:
+        //current basket = [{},{},{}]
+        //setBasket({},{},{},{})
+    };
   return (
     
     <Container>
@@ -15,7 +32,7 @@ function Card({basket, setBasket, image, title, price, rating}) {
          <Rating name="half-rating-read" defaultValue={rating} precision={0.5} readOnly />
          <p>$ {price}</p>
 
-         <button>Add to cart</button>
+         <button onClick={addToBasket}>Add to cart</button>
         </Description>
     </Container>
   )
