@@ -3,9 +3,19 @@ import { useStateValue } from "../StateProvider";
 import styled from 'styled-components'
 import Navbar from './Navbar';
 import CurrencyFormat from 'react-currency-format';
+import { getBasketTotal } from '../reducer';
 
 function Checkout() {
-    const [{basket}]=useStateValue();
+    const [{basket}, dispatch]=useStateValue();
+    const removeFromBasket = (e, id) => {
+      e.preventDefault();
+  
+      dispatch({
+        type: "REMOVE_FROM_BASKET",
+        id: id,
+      });
+    };
+  
 
     console.log('Checkout >>>>>', basket);
   return (
@@ -14,25 +24,26 @@ function Checkout() {
       <Main>
         <ShoppingCart>
           <h2>Shopping Cart</h2>
+          {basket?.map((product) => (
+              <Product>
+              <Image>
+                <img src={product.image} alt="" />
+              </Image>
+              <Description>
+                <h4>{product.title}</h4>
+              
+                <p>$ {product.price}</p>
 
-          <Product>
-            <Image>
-              <img src="https://m.media-amazon.com/images/I/61FYreEYwlL._AC_SX679_.jpg" alt="" />
-            </Image>
-            <Description>
-              <h4>Portable Neck Fan,Hands Free 360° Bladeless Small Fan Rechargeable Battery Operated,Wearable Cooling USB Personal Fan for Men Women Travel Hiking Outdoor</h4>
-            
-            <p>$ 200</p>
-            <button>Remove</button>
-            </Description>
-          </Product>
+                <button onClick={(e) =>removeFromBasket(e,product.id)}>Remove</button>
+              </Description>
+            </Product>
+            ))}
         </ShoppingCart>
         <Subtotal>
-
         <CurrencyFormat renderText={(value)=>(
           <>
           <p>
-            Subtotal({basket.length} items): <strong>{value}</strong>
+            Subtotal ( {basket.length} items) : <strong>{value}</strong>
           </p>
           <small>
             <input type="checkbox" />
@@ -41,7 +52,7 @@ function Checkout() {
           </>
         )}
         decimalScale={2}
-        value={12000}
+        value={getBasketTotal(basket)}
         displayType="text"
         thousandSeparator={true}
         prefix={"$ "}

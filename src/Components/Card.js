@@ -38,55 +38,55 @@ function Card({ image, title, price, rating}) {
   )
 }
 
-const Container= styled.div`
-width: 100%;
-height: 100%;
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
 
-display: flex;
-flex-direction: column;
-background-color: #fff;
-z-index: 10;
- /*border: 1px solid red; //Card border color */
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  z-index: 10;
 `;
-const Image= styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-top: 20px;
-flex: 0.3;
+const Image = styled.div`
+  width: 100%;
 
-img{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex: 0.3;
+  img {
     width: 180px;
     height: 200px;
-}
+  }
 `;
-const Description= styled.div`
-width: 90%;
-margin: auto;
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-flex: 0.7;
+const Description = styled.div`
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 0.7;
 
-h5{
+  h5 {
     font-size: 16px;
     font-weight: 600;
-}
-p{
-    font-weight: 600;
-}
+  }
 
-button{
+  p {
+    font-weight: 600;
+  }
+
+  button {
     width: 100%;
     height: 33px;
     background-color: #fa8900;
     border: none;
     border-radius: 10px;
-
     cursor: pointer;
-}
+  }
 `;
 
 export default Card
