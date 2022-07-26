@@ -32,6 +32,9 @@ const Container= styled.div`
 width: 100%;
 
 background-color: rgb(234, 237, 237);
+max-width: 1400px;
+margin: auto;
+height: fit-content;
 `;
 const Banner= styled.div`
 width: 100%;
