@@ -4,9 +4,11 @@ import styled from 'styled-components'
 import Navbar from './Navbar';
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from '../reducer';
+import { useNavigate } from 'react-router-dom';
 
 function Checkout() {
     const [{basket}, dispatch]=useStateValue();
+    const navigate = useNavigate();
     const removeFromBasket = (e, id) => {
       e.preventDefault();
   
@@ -57,7 +59,7 @@ function Checkout() {
         thousandSeparator={true}
         prefix={"$ "}
         />
-        <button>Proceed to Checkout</button>
+        <button onClick={()=>navigate("/address")}>Proceed to Checkout</button>
         </Subtotal>
       </Main>
     </Container>
