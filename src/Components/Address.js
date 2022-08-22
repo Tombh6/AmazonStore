@@ -13,6 +13,8 @@ function Address() {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
 
+    const navigate = useNavigate();
+
     const deliver = (e) => {
         e.preventDefault();
     
@@ -28,7 +30,7 @@ function Address() {
           },
         });
     
-        
+        navigate("/payment");
       };
   return (
     <Container>
