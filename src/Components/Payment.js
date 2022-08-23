@@ -39,7 +39,7 @@ const elements = useElements();
             <div>
               <p>Card Details</p>
 
-              {/*Card Element */}
+              {/*Card Element*/}
               <CardElement/>
             </div>
           </PaymentContainer>
