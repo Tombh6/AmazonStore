@@ -14,7 +14,7 @@ function Navbar() {
         </Logo>
         <SearchBar>
         <input type="text" placeholder='Search...'/>
-          <SearchIcon>
+          <SearchIcon onClick={()=> navigate("/addproduct")}>
             <img src="./searchIcon.png" alt="" />
           </SearchIcon>
         </SearchBar>
@@ -35,7 +35,7 @@ function Navbar() {
         </Inner>
         <MobileSearchBar>
           <input type="text" placeholder='Search...'/>
-          <SearchIcon>
+          <SearchIcon onClick={()=> navigate("/addproduct")}>
           <img src="./searchIcon.png" alt="" />
           </SearchIcon>
         </MobileSearchBar>

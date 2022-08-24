@@ -19,4 +19,11 @@ mongoose.connect(connection_url, {
 //API
 app.get("/",(req,res) => res.status(200).send("Home Page"));
 
+//Add Product
+app.post('/products/add', (req,res)=>{
+    const productDetail= req.body;
+
+    console.log('Product Detail >>>>', productDetail);
+});
+
 app.listen(port, () => console.log("Listening on the port:", port));

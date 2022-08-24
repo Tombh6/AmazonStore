@@ -3,12 +3,71 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 function AddProduct() {
-  return (
-    <Container>
-        <h1>Add Product Page</h1>
-    </Container>
-  )
-}
+    const [title, setTitle] = useState("");
+    const [imageURL, setImageURL] = useState("");
+    const [price, setPrice] = useState(0);
+    const [rating, setRating] = useState(0);
+  
+    const addProduct = (e) => {
+      e.preventDefault();
+  
+      axios
+        .post("/products/add", { title, imageURL, price, rating })
+        .then(() => {
+          setTitle("");
+          setImageURL("");
+          setPrice(0);
+          setRating(0);
+        })
+        .catch((error) => alert(error.message));
+    };
+    return (
+      <Container>
+        <Logo>
+          <img src="./amazon_logo.png" alt="" />
+        </Logo>
+  
+        <FormContainer>
+          <h3>Add Product</h3>
+  
+          <InputContainer>
+            <p>Title</p>
+            <input
+              type="text"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
+            />
+          </InputContainer>
+          <InputContainer>
+            <p>ImageURL</p>
+            <input
+              type="text"
+              onChange={(e) => setImageURL(e.target.value)}
+              value={imageURL}
+            />
+          </InputContainer>
+          <InputContainer>
+            <p>Price</p>
+            <input
+              type="number"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+            />
+          </InputContainer>
+          <InputContainer>
+            <p>Rating</p>
+            <input
+              type="number"
+              onChange={(e) => setRating(e.target.value)}
+              value={rating}
+            />
+          </InputContainer>
+  
+          <Button onClick={addProduct}>Add Product</Button>
+        </FormContainer>
+      </Container>
+    );
+  }
 
 
 const Container = styled.div`
