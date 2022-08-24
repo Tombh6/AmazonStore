@@ -1,9 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const Products = require("./Products");
 
 const app = express();
-const port= 3001;
+const port= 8000;
 
 //Middleware
 app.use(express.json());
@@ -20,10 +21,10 @@ mongoose.connect(connection_url, {
 app.get("/",(req,res) => res.status(200).send("Home Page"));
 
 //Add Product
-app.post('/products/add', (req,res)=>{
+app.post("/products/add", (req, res)=>{
     const productDetail= req.body;
 
-    console.log('Product Detail >>>>', productDetail);
+    console.log("Product Detail >>>>", productDetail);
 });
 
 app.listen(port, () => console.log("Listening on the port:", port));
