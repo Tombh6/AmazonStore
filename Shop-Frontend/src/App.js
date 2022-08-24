@@ -9,6 +9,7 @@ import Address from './Components/Address';
 import Payment from './Components/Payment';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import AddProduct from './Components/AddProduct';
 
 
 
@@ -29,6 +30,7 @@ function App() {
       <Route path="/payment" element={<Elements stripe={promise}>
                 <Payment />
               </Elements>}/>
+      <Route path="/addproduct" element={<AddProduct/>}/>
       </Routes>
     </Container>
    </Router>
