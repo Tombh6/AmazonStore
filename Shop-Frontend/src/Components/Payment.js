@@ -6,15 +6,49 @@ import { useStateValue } from "../StateProvider";
 import Address from "./Address";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Navbar from "./Navbar";
-
-import { useNavigate } from "react-router-dom";
+import axios from "../axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 function Payment() {
-const [{address, basket}]=useStateValue();
-
+  const [{ address, basket, user }, dispatch] = useStateValue();
+const [clientSecret, setClientSecret] = useState("");
 const elements = useElements();
   const stripe = useStripe();
+
+  const navigate = useNavigate();
+  useEffect(()=>{
+    const fetchClientSecret= async () =>{
+      const data = await axios.post("/payment/create", {
+        amount: getBasketTotal(basket),
+      });
+
+      setClientSecret(data.data.clientSecret);
+    };
+    fetchClientSecret();
+    console.log("clientSecret is >>>>", clientSecret);
+  },[]);
+
+  const confirmPayment = async (e) => {
+    e.preventDefault();
+
+    await stripe
+      .confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      })
+      .then((result) => {
+        alert("Payment Successful");
+        dispatch({
+          type:"EMPTY_BASKET"
+        });
+        navigate("/");
+        })
+        .catch(err=>console.warn(err));
+
+      };
+    
 
   return (
     <Container>
@@ -82,7 +116,7 @@ const elements = useElements();
         thousandSeparator={true}
         prefix={"$ "}
         />
-        <button>Please Order</button>
+        <button onClick={confirmPayment}>Please Order</button>
         </Subtotal>
        </Main>
     </Container>
