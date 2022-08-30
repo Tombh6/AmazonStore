@@ -23,7 +23,7 @@ function AddProduct() {
   return (
     <Container>
       <Logo>
-        <img src="./amazon_logo.png" alt="" />
+        <img src="./amazon_logo1.png" alt="" />
       </Logo>
 
       <FormContainer>

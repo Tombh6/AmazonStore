@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 //Connection URL
-const connection_url = "mongodb+srv://Tombh6:0505795582@cluster0.uumqpcw.mongodb.net/Cluster0?retryWrites=true&w=majority"
+const connection_url = "mongodb+srv://Tombh:0505795582@cluster0.7c9zf0r.mongodb.net/Cluster0?retryWrites=true&w=majority"
 
 mongoose.connect(connection_url, {
     useNewUrlParser:true,
@@ -25,6 +25,14 @@ app.post("/products/add", (req, res)=>{
     const productDetail= req.body;
 
     console.log("Product Detail >>>>", productDetail);
+
+   Products.create(productDetail, (err, data) =>{
+   if(err){
+    res.status(500).send(err.message);
+   }else{
+    res.status(201).send(data);
+   }
+   });
 });
 
 app.listen(port, () => console.log("Listening on the port:", port));
