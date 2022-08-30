@@ -1,11 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
-import Navbar from './Navbar'
-import Card from './Card'
+import axios from "../axios";
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Card from "./Card";
+import { useStateValue } from "../StateProvider";
+import Navbar from "./Navbar";
 
 
 function Home(){
 
+  const [products, setProducts]= useState("");
+
+
+  useEffect(()=>{
+    const fetchdata = async ()=> {
+      const data = await axios.get("/products/get");
+      setProducts(data);
+    };
+    fetchdata();
+  },[]);
    
     return(
         <Container>
@@ -15,14 +27,14 @@ function Home(){
              <img src="./amazonBanner.jpg" alt="" /> {/*For big image in mobile screen */}
             </Banner>
             <Main>
-                <Card id={1}  image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={850} rating={3}  title={"SAMSUNG"} />
-                <Card id={2}  image={"https://m.media-amazon.com/images/I/3105D4N+YAL._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={4}  title={"Airpods"} />
-                <Card id={3} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={3}  title={"SAMSUNG"} />
-                <Card id={4} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={3}  title={"SAMSUNG"} />
-                <Card id={5} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={3}  title={"SAMSUNG"} />
-                <Card id={6} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={3}  title={"SAMSUNG"} />
-                <Card id={7} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={3}  title={"SAMSUNG"} />
-                <Card id={8} image={"https://m.media-amazon.com/images/I/51tYxedQ1-L._AC_UF452,452_FMjpg_.jpg"}  price={250} rating={3}  title={"SAMSUNG"} />
+              {
+                products && products?.data.map(
+                  (product)=>(<Card id={product._id}
+                    image={product.imageURL}
+                    price={product.price}
+                    rating={product.rating}
+                    title={product.title} />))
+              }
             </Main>
         </Container>
     )

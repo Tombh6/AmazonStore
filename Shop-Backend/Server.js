@@ -35,4 +35,14 @@ app.post("/products/add", (req, res)=>{
    });
 });
 
+app.get("/products/get", (req, res)=>{
+    Products.find((err, data)=>{
+        if(err){
+            res.status(500).send(err);
+        }else{
+            res.status(200).send(data);
+        }
+    });
+});
+
 app.listen(port, () => console.log("Listening on the port:", port));
