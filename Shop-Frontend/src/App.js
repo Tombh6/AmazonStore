@@ -10,7 +10,7 @@ import Payment from './Components/Payment';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import AddProduct from './Components/AddProduct';
-
+import Orders from "./Components/Orders";
 
 
 const promise = loadStripe(
@@ -31,6 +31,7 @@ function App() {
                 <Payment />
               </Elements>}/>
       <Route path="/addproduct" element={<AddProduct/>}/>
+      <Route path="/orders" element={<Orders />} />
       </Routes>
     </Container>
    </Router>

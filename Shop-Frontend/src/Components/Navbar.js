@@ -3,42 +3,53 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { useStateValue } from "../StateProvider";
 function Navbar() {
-  const [{basket}]=useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
   const navigate = useNavigate();
+
+  const signOut = () => {
+    dispatch({
+      type: "SET_USER",
+      user: null,
+    });
+
+    localStorage.removeItem("user");
+    navigate("/");
+  };
   return (
     <Container>
-        <Inner>
-
-        <Logo>
-            <img src="./amazon_logo1.png" alt="" />
+      <Inner>
+        <Logo onClick={() => navigate("/")}>
+          <img src="./amazon_logo1.png" alt="" />
         </Logo>
         <SearchBar>
-        <input type="text" placeholder='Search...'/>
-          <SearchIcon onClick={()=> navigate("/addproduct")}>
+          <input type="text" placeholder="Search..." />
+          <SearchIcon onClick={() => navigate("/addproduct")}>
             <img src="./searchIcon.png" alt="" />
           </SearchIcon>
         </SearchBar>
         <RightContainer>
-            <NavButton>
-               <p>Hello,</p>
-               <p>Guest</p>
-            </NavButton>
-            <NavButton>
-               <p>Return</p>
-               <p>& Orders</p>
-            </NavButton>
-            <BasketButton onClick={()=>navigate("/checkout")}>
-                <img src="./basket-icon.png" alt="" />
-                <p>{basket?.length}</p>
-            </BasketButton>
+          <NavButton
+            onClick={user ? () => signOut() : () => navigate("/login")}
+          >
+            <p>Hello,</p>
+            <p>{user ? user?.fullName : "Guest"}</p>
+          </NavButton>
+          <NavButton onClick={() => navigate("/orders")}>
+            <p>Return</p>
+            <p>& Orders</p>
+          </NavButton>
+          <BasketButton onClick={() => navigate("/checkout")}>
+            <img src="./basket-icon.png" alt="" />
+            <p>{basket?.length}</p>
+          </BasketButton>
         </RightContainer>
-        </Inner>
-        <MobileSearchBar>
-          <input type="text" placeholder='Search...'/>
-          <SearchIcon onClick={()=> navigate("/addproduct")}>
+      </Inner>
+      <MobileSearchbar>
+        <input type="text" placeholder="Search..." />
+        <SearchIcon onClick={() => navigate("/addproduct")}>
           <img src="./searchIcon.png" alt="" />
-          </SearchIcon>
-        </MobileSearchBar>
+        </SearchIcon>
+      </MobileSearchbar>
     </Container>
   );
 }
@@ -98,7 +109,7 @@ const SearchBar = styled.div`
   }
 `;
 
-const MobileSearchBar = styled.div`
+const MobileSearchbar = styled.div`
   height: 35px;
   width: 90%;
   display: flex;
@@ -181,7 +192,5 @@ const BasketButton = styled.div`
     color: #fff;
     font-weight: 500;
   }
-
 `;
-
-export default Navbar
+export default Navbar;

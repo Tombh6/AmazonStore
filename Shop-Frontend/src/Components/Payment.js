@@ -39,7 +39,13 @@ const elements = useElements();
         },
       })
       .then((result) => {
-        alert("Payment Successful");
+        axios.post("/orders/add", {
+          basket: basket,
+          price: getBasketTotal(basket),
+          email: user?.email,
+          address: address,
+        });
+        
         dispatch({
           type:"EMPTY_BASKET"
         });
