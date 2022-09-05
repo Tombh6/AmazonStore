@@ -3,25 +3,21 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const Products = require("./Products");
 const Orders = require("./Orders");
-const stripe = require("stripe")("sk_test_51LZVZTHyIX1HyiLfqn2Z9gr0RP7e2xaQfvHsYNevtOW93D9GXN9UVXLUjTFhaEIi6dV8x0YN95Pj3Pbw0qaOYVG000fEtJnJiq");
+const stripe = require("stripe")(process.env.STR_KEY);
 const Users = require("./Users");
 const bcrypt = require("bcryptjs");
 const app = express();
 const port= 8000;
 require('dotenv').config();
 
-console.log(process.env.MON_KEI);
-console.log(process.env.STR_KEI);
-
-MON_KEI="mongodb+srv://Tombh:0505795582@cluster0.7c9zf0r.mongodb.net/Cluster0?retryWrites=true&w=majority";
-STR_KEI="sk_test_51LZVZTHyIX1HyiLfqn2Z9gr0RP7e2xaQfvHsYNevtOW93D9GXN9UVXLUjTFhaEIi6dV8x0YN95Pj3Pbw0qaOYVG000fEtJnJiq";
+console.log(process.env);
 
 //Middleware
 app.use(express.json());
 app.use(cors());
 
 //Connection URL
-const connection_url = "mongodb+srv://Tombh:0505795582@cluster0.7c9zf0r.mongodb.net/Cluster0?retryWrites=true&w=majority"
+const connection_url = process.env.MON_KEY
 
 mongoose.connect(connection_url, {
     useNewUrlParser:true,
