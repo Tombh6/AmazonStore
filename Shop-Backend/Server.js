@@ -8,6 +8,13 @@ const Users = require("./Users");
 const bcrypt = require("bcryptjs");
 const app = express();
 const port= 8000;
+require('dotenv').config();
+
+console.log(process.env.MON_KEI);
+console.log(process.env.STR_KEI);
+
+MON_KEI="mongodb+srv://Tombh:0505795582@cluster0.7c9zf0r.mongodb.net/Cluster0?retryWrites=true&w=majority";
+STR_KEI="sk_test_51LZVZTHyIX1HyiLfqn2Z9gr0RP7e2xaQfvHsYNevtOW93D9GXN9UVXLUjTFhaEIi6dV8x0YN95Pj3Pbw0qaOYVG000fEtJnJiq";
 
 //Middleware
 app.use(express.json());
@@ -129,7 +136,7 @@ app.post("/orders/add", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("order added to database >> ", result);
+          console.log("Order added to database >> ", result);
         }
       });
 });
