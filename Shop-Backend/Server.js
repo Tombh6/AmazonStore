@@ -3,14 +3,15 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const Products = require("./Products");
 const Orders = require("./Orders");
-const stripe = require("stripe")(process.env.STR_KEY);
+const stripe = require("stripe")((process.env.STRIPE_KEY));
 const Users = require("./Users");
 const bcrypt = require("bcryptjs");
 const app = express();
 const port= 8000;
-require('dotenv').config();
+require("dotenv").config();
 
-console.log(process.env);
+console.log(process.env.STRIPE_KEY);
+
 
 //Middleware
 app.use(express.json());

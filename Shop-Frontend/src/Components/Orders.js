@@ -1,13 +1,25 @@
 
+import axios from "../axios";
 import React from "react";
 import styled from "styled-components";
 import Navbar from './Navbar';
+import { useStateValue } from './../StateProvider';
+import { useState,useEffect } from "react";
+
 
 
 
 function Orders() {
 
+  const[{user}]=useStateValue();
+  const [orders, setOrders] = useState([]);
+
+    useEffect(() =>{
+    axios.post("/orders/get", {email:user.email}).then((res)=> setOrders(res.data) );
     
+    },[]);
+
+    console.log(orders);
   
     return (
       <Container>
@@ -16,36 +28,47 @@ function Orders() {
          <OrderContainer>
             <h2>Your Orders</h2>
 
-            <OrderDetail>
-                <AddressComponent>
-                    <h4>Shipping Address</h4>
+            {
+              orders.map((order) => <OrderDetail>
+              <AddressComponent>
+                  <h4>Shipping Address</h4>
 
-                    <div>
-                    <p>Tom BH</p>
-                    <p>Hertzel</p>
-                    <p>TLV</p>
-                    <p>IL</p>
-                    <p>Phone: 050xxxxxxxx</p>
-                    </div>
-                </AddressComponent>
-                <OrderBasket>
-                    <h4>Order</h4>
-                    <p>Subtotal : $ <span>1000</span></p>
+                  <div>
+                  <p>{order.address.fullName}</p>
+                  <p>{order.address.flat}</p>
+                  <p>{order.address.area}</p>
+                  <p>{order.address.city}, {order.address.state}</p>
+                  <p>Phone: {order.address.phone}</p>
+                  </div>
+              </AddressComponent>
+              <OrderBasket>
+                  <h4>Order</h4>
+                  <p>Subtotal : $ <span>{order.price}</span></p>
 
-                    <Product>
-                 <Image>
-                <img src={"https://m.media-amazon.com/images/I/51eIcuqnBZL._AC_UY327_FMwebp_QL65_.jpg"} alt="" />
-                 </Image>
-                 <Description>
-                   <h4>Beats Fit Pro</h4>
-              
-                   <p>$ {195}</p>
+                  {
+                    order.products.map((product) => ( <Product>
+                      <Image>
+                     <img src={product.image} alt="" />
+                      </Image>
+                      <Description>
+                        <h4>{product.title}</h4>
+                   
+                        <p>$ {product.price}</p>
+       
+                      </Description>
+                        </Product>
+                      
+                    ))
+                  }
 
-                 </Description>
-                   </Product>
-                    
-                </OrderBasket>
-            </OrderDetail>
+                 
+                  
+              </OrderBasket>
+          </OrderDetail> )
+
+            }
+
+           
          </OrderContainer>
         </Main>
       </Container>
