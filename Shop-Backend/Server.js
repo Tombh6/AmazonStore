@@ -66,10 +66,10 @@ app.post("/auth/signup", async (req, res) => {
       if (await bcrypt.compare(password, userDetail.password)) {
         res.send(userDetail);
       } else {
-        res.send({ error: "invaild Password" });
+        res.send({ error: "Invalid Password" });
       }
     } else {
-      res.send({ error: "user is not exist" });
+      res.send({ error: "User is not exist" });
     }
   });
   
